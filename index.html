@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>RuangFile — Aozora</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><div class="brand-mark">R</div><div><strong>RuangFileAozora</strong><small>Arsip digital pribadi</small></div></div>
+    <div class="side-label">MENU UTAMA</div>
+    <button class="nav-item active" data-filter="all"><span>▦</span> Semua file <span class="nav-count" id="allCount">0</span></button>
+    <button class="nav-item" data-filter="document"><span>▤</span> Dokumen</button>
+    <button class="nav-item" data-filter="image"><span>▧</span> Gambar</button>
+    <button class="nav-item" data-filter="video"><span>▷</span> Video</button>
+    <button class="nav-item" data-filter="other"><span>◫</span> File lainnya</button>
+    <div class="sidebar-bottom">
+      <div class="storage-card"><div class="storage-icon">☁</div><strong>Penyimpanan browser</strong><p>File disimpan di browser perangkat ini.</p><div class="storage-track"><span></span></div><small id="storageText">0 file tersimpan</small></div>
+      <button class="nav-item" id="aboutBtn"><span>ⓘ</span> Tentang aplikasi</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="mobile-menu" id="menuBtn" aria-label="Buka menu">☰</button>
+      <div class="breadcrumb">RuangFile <span>/</span> <b id="pageTitle">Semua file</b></div>
+      <div class="top-actions"><span class="local-pill"><i></i> Penyimpanan lokal</span><div class="avatar">AO</div></div>
+    </header>
+
+    <section class="content">
+      <div class="welcome-row">
+        <div><p class="eyebrow">RUANG KERJA DIGITAL AOZORA</p><h1>Terbanglah dengan bebas... Aozora</h1><p class="subtitle">Simpan, kelola, dan temukan file pentingmu dengan mudah.</p></div>
+        <button class="primary-btn" id="uploadTop"><span>＋</span> Upload file</button>
+      </div>
+
+      <section class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Pilih file untuk diunggah">
+        <div class="upload-symbol"><span>↑</span></div>
+        <div><strong>Tarik dan letakkan file di sini</strong><p>atau <button class="text-btn" id="browseBtn">pilih file dari perangkat</button></p><small>Berbagai jenis file didukung · Pilih beberapa file sekaligus</small></div>
+      </section>
+      <input type="file" id="fileInput" multiple hidden>
+
+      <div class="stats-grid">
+        <article class="stat-card"><div class="stat-top"><span>Total file</span><span class="stat-icon purple">▦</span></div><div class="stat-number" id="statTotal">0</div><div class="stat-foot">File tersimpan di arsip</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Dokumen</span><span class="stat-icon blue">▤</span></div><div class="stat-number" id="statDocs">0</div><div class="stat-foot">PDF, Word, teks, dan lainnya</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Gambar</span><span class="stat-icon orange">▧</span></div><div class="stat-number" id="statImages">0</div><div class="stat-foot">Foto dan gambar</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Total ukuran</span><span class="stat-icon green">⇧</span></div><div class="stat-number" id="statSize">0 B</div><div class="stat-foot">Akumulasi ukuran file</div></article>
+      </div>
+
+      <section class="files-section">
+        <div class="files-heading"><div><h2 id="listTitle">File terbaru</h2><p>Daftar file yang tersimpan di perangkat ini.</p></div><div class="file-controls"><label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Cari nama file..."></label><select id="sortSelect" aria-label="Urutkan file"><option value="newest">Terbaru</option><option value="oldest">Terlama</option><option value="name">Nama A–Z</option><option value="size">Ukuran terbesar</option></select></div></div>
+        <div class="table-wrap">
+          <table><thead><tr><th>NAMA FILE</th><th>KATEGORI</th><th>UKURAN</th><th>TANGGAL DITAMBAHKAN</th><th></th></tr></thead><tbody id="fileRows"></tbody></table>
+          <div class="empty-state" id="emptyState"><div class="empty-illustration">▤</div><h3>Belum ada file</h3><p>Upload file pertamamu untuk mulai mengisi arsip.</p><button class="primary-btn" id="emptyUpload">＋ Upload file</button></div>
+        </div>
+      </section>
+      <footer>© 2026 Aozora <span>Arsip digital sederhana untuk file pentingmu.</span></footer>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <dialog id="aboutDialog"><div class="dialog-head"><h2>Tentang RuangFile</h2><button class="icon-btn" id="closeAbout">×</button></div><p>RuangFile adalah aplikasi arsip file berbasis HTML, CSS, dan JavaScript. File disimpan di penyimpanan browser pada perangkat ini menggunakan IndexedDB.</p><div class="notice"><strong>Catatan penting</strong><br>File tidak otomatis diunggah ke server atau tersinkron ke perangkat lain. Jangan hapus data browser jika file masih dibutuhkan. Simpan salinan cadangan file penting.</div><button class="primary-btn full-btn" id="closeAbout2">Mengerti</button></dialog>
+  <script src="script.js"></script>
+</body>
+</html>
